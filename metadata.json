@@ -1,0 +1,6 @@
+{
+  "name": "구민진 KOO MINJIN | 웹툰 포트폴리오",
+  "description": "네 컷 안에서 이야기를 끝까지 이끌고, 장면의 감정에 맞춰 색을 고르는 신입 웹툰 창작자 구민진의 포트폴리오입니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

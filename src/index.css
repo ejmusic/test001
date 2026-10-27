@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Palette Tokens from Spec */
+    --ink-900: #0B0B0B;
+    --wine-900: #281214;
+    --wine-700: #530B12;
+    --moss-700: #3B453E;
+    --grey-500: #808080;
+
+    --brown-700: #714E2F;
+    --sand-300: #CFB083;
+    --sun-400: #FFD557;
+    --cream-100: #FFEDD0;
+    --cream-50: #FFF7CB;
+
+    /* Live Dynamic Stage Theme */
+    --bg: #0B0B0B;
+    --fg: #FFF7CB;
+    --accent: #FFD557;
+    --line: color-mix(in srgb, var(--fg) 18%, transparent);
+    --muted: color-mix(in srgb, var(--fg) 62%, transparent);
+
+    /* Motion Curves */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+    --ease-cut: steps(1, end);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Custom Typography Utility Classes */
+.font-serif-kr {
+  font-family: 'Noto Serif KR', serif;
+}
+
+.font-accent-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Subtle Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Breathing Glow Animation for Hero */
+@keyframes breathingGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.18) translate(-2%, 2%);
+  }
+}
+
+.animate-glow {
+  animation: breathingGlow 12s ease-in-out infinite;
+}
+
+/* Comic Panel Box Style from Spec: 2px radius, clean shadow */
+.comic-panel-frame {
+  border-radius: 2px;
+  box-shadow: 0 20px 50px -20px rgba(40, 18, 20, 0.45);
+}
+
+/* Comic Stamp Effect */
+@keyframes stampIn {
+  from {
+    transform: scale(1.6) rotate(-6deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(-6deg);
+    opacity: 1;
+  }
+}
+
+.animate-stamp {
+  animation: stampIn 0.28s var(--ease-out) forwards;
+}
+
+/* Speech Bubble Pop Effect */
+@keyframes bubblePop {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-bubble {
+  animation: bubblePop 0.4s var(--ease-out) forwards;
+}
+
+/* Hide scrollbar for clean rails */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
